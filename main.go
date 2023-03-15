@@ -3,6 +3,7 @@ package main
 import (
 	"flag"
 	"log"
+	"os"
 )
 
 var name string
@@ -26,4 +27,7 @@ func main() {
 	}
 
 	log.Printf("name: %s", name)
+}
+func Parse() {
+	flag.CommandLine.Parse(os.Args[1:])
 }

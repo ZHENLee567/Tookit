@@ -1,3 +1,3 @@
-module github.com/go-programming-tour-book/tour
+module github.com/ZHENLee567/Toolkit
 
 go 1.19
