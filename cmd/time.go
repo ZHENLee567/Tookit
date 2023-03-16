@@ -39,6 +39,7 @@ var calculateTimeCmd = &cobra.Command{
 	Long:  "输入一个时间戳以及一个持续时间，计算经过该持续时间后，时间是多少",
 	Run: func(cmd *cobra.Command, args []string) {
 		var currentTimer time.Time
+		location, _ := time.LoadLocation("Asia/Shanghai") // 设定当前时区
 		var layout = "2006-01-02 15:04:05"
 		if calculateTime == "" {
 			currentTimer = timer.GetNowTime()
@@ -48,7 +49,7 @@ var calculateTimeCmd = &cobra.Command{
 			if space == 0 {
 				layout = "2006-01-02"
 			}
-			currentTimer, err = time.Parse(layout, calculateTime)
+			currentTimer, err = time.ParseInLocation(layout, calculateTime, location)
 			if err != nil {
 				t, _ := strconv.Atoi(calculateTime)
 				currentTimer = time.Unix(int64(t), 0)

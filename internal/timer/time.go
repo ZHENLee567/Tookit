@@ -3,7 +3,8 @@ package timer
 import "time"
 
 func GetNowTime() time.Time {
-	return time.Now()
+	location, _ := time.LoadLocation("Asia/Shanghai") // 设定当前时区
+	return time.Now().In(location)
 }
 
 func GetCalculateTime(currentTimer time.Time, d string) (time.Time, error) {
